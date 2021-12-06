@@ -3,6 +3,7 @@
   <Toggle />
   <br />
   <br />
+  <button v-on:click="step = 'exo2'">Passer à l'exercice 2</button>
   <button v-on:click="step = 'step1'">Commencer un nouveau Formulaire</button>
   <div v-if="step === 'step1'">
     <h1 :style="{ color: colorie }">Formulaire</h1>
@@ -26,7 +27,7 @@
       Vous êtes un robot ? <br />
       Si c'est le cas, cliquez sur le bouton "je suis un robot" sinon continuez
     </h1>
-    <button v-on:click="step = 'steprobot'">Je suis un robot</button> <br>
+    <button v-on:click="step = 'steprobot'">Je suis un robot</button> <br />
     <button v-on:click="step = 'step3'">Continuez !</button>
   </div>
   <div v-if="step === 'steprobot'">
@@ -34,6 +35,9 @@
   </div>
   <div v-if="step === 'step3'">
     <h1>Ton formulaire est bien envoyé</h1>
+  </div>
+  <div v-if="step === 'exo2'">
+    <Exo v-on:enlarge-text="postFontSize += 0.1" @update-cart="updateCart" />
   </div>
 </template>
 
@@ -46,6 +50,7 @@ import Profession from "./components/Profession.vue";
 import Sexe from "./components/Sexe.vue";
 import Competences from "./components/Competences.vue";
 import Validation from "./components/Validation.vue";
+import Exo from "./components/Exo.vue";
 
 export default {
   name: "App",
@@ -58,12 +63,23 @@ export default {
     Sexe,
     Competences,
     Validation,
+    Exo,
   },
   data() {
     return {
       colorie: "red",
       step: "step0",
+      postFontSize: 1,
     };
+  },
+  methods: {
+    updateCart(toto) {
+      console.log("mettre à jour panier");
+      console.log(toto);
+    },
+    emptyCart() {
+      console.log("vider mon panier");
+    },
   },
 };
 </script>
