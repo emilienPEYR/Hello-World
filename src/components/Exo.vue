@@ -8,8 +8,6 @@
     </li>
   </ul>
 
-  <button v-on:click="$emit('enlarge-text')">Agrandir texte</button>
-
   <button v-on:click="$emit('update-cart', cart)">Passer ma commande</button>
   <br />
   <select v-model="selected">
@@ -21,7 +19,7 @@
     <option value="Yellow">Jaune</option>
     <option value="blue">Bleu</option>
   </select>
-  <p>Le texte est {{ selected }}.</p>
+  <p>The text is {{ selected }}.</p>
 </template>
 
 <script>
@@ -30,7 +28,7 @@ export default {
   data() {
     return {
       cart: ["pain", "fromage", "fleurs", "vin"],
-      selected: "Noir",
+      selected: "Black",
     };
   },
   props: {

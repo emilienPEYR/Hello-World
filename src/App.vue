@@ -4,6 +4,7 @@
   <br />
   <br />
   <button v-on:click="step = 'exo2'">Passer à l'exercice 2</button>
+  <button v-on:click="step = 'recherche'">Rechercher une cryptos</button>
   <button v-on:click="step = 'step1'">Commencer un nouveau Formulaire</button>
   <div v-if="step === 'step1'">
     <h1 :style="{ color: colorie }">Formulaire</h1>
@@ -39,6 +40,23 @@
   <div v-if="step === 'exo2'">
     <Exo v-on:enlarge-text="postFontSize += 0.1" @update-cart="updateCart" />
   </div>
+  <div v-if="step === 'recherche'">
+    <div id="app">
+      <Recherche
+        :items="[
+          'Binance Coin',
+          'bitcoin',
+          'Ethereum',
+          'Tether',
+          'Solana',
+          'Cardano',
+          'XRT',
+          'CHZ',
+          'Autre',
+        ]"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -51,6 +69,7 @@ import Sexe from "./components/Sexe.vue";
 import Competences from "./components/Competences.vue";
 import Validation from "./components/Validation.vue";
 import Exo from "./components/Exo.vue";
+import Recherche from "./components/Recherche.vue";
 
 export default {
   name: "App",
@@ -64,6 +83,7 @@ export default {
     Competences,
     Validation,
     Exo,
+    Recherche,
   },
   data() {
     return {
